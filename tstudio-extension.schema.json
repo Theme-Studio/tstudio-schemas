@@ -7,6 +7,14 @@
         "description": "The name for the extension",
         "type": "string"
       },
+      "version": {
+        "description": "The version for the extension",
+        "type": "string"
+      },
+      "src": {
+        "description": "The source for the extension",
+        "type": "string"
+      },
       "publisher": {
         "type": "string",
         "description": "The publisher of the extension"
