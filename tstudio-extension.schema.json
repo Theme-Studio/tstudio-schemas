@@ -2,9 +2,102 @@
   "$schema": "http://json-schema.org/draft-04/schema#",
   "title": "JSON schema for Theme Studio Extension",
   "properties": {
-    "doesitwork": {
-      "type": "boolean",
-      "default": true
+    "tstudio": {
+      "name": {
+        "description": "The name for the extension",
+        "type": "string"
+      },
+      "publisher": {
+        "type": "string",
+        "description": "The publisher of the extension"
+      },
+      "keywords": {
+        "description": "The keywords for the extension",
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "features": {
+        "$ref": "#/definitions/features"
+      }
+    }
+  },
+  "definitions": {
+    "features": {
+      "type": "object",
+      "properties": {
+        "commands": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/command"
+          }
+        },
+        "keybinds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/keybind"
+          }
+        }
+      }
+    },
+    "command": {
+      "description": "A command in the extension",
+      "type": "object",
+      "required": ["name", "description", "id"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The id of the command"
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the command"
+        },
+        "description": {
+          "type": "string",
+          "description": "The description of the command"
+        }
+      }
+    },
+    "keybind": {
+      "description": "A keybind in the extension",
+      "type": "object",
+      "required": ["name", "description", "id"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "The id of the command"
+        },
+        "command": {
+          "type": "string",
+          "description": "The command to execute"
+        },
+        "description": {
+          "type": "string",
+          "description": "The description of the command"
+        },
+        "key": {
+          "description": "Key or key sequence (separate keys with plus-sign and sequences with space, e.g. Ctrl+T and Ctrl+T S for a chord).",
+          "type": "string"
+        },
+        "mac": {
+          "description": "Mac specific",
+          "type": "string"
+        },
+        "linux": {
+          "description": "Linux specific",
+          "type": "string"
+        },
+        "win": {
+          "description": "Windows specific",
+          "type": "string"
+        },
+        "when": {
+          "description": "Condition when the key is active.",
+          "type": "string"
+        }
+      }
     }
   }
 }
